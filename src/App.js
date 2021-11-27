@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useEffect, useState } from "react";
+import "./App.css";
+import NewComponent from "./NewComponent";
 function App() {
+  const [count, setCount] = useState(0);
+  const [typeOfInteger, setTypeOfInteger] = useState("");
+
+  const increment = () => {
+    setCount(count + 1);
+  };
+  useEffect(() => {
+    if (count > 0) {
+      setTypeOfInteger("positive");
+    } else if (count < 0) {
+      setTypeOfInteger("negative");
+    } else {
+      setTypeOfInteger("zero");
+    }
+  }, [count]);
+
+  function decrement() {
+    setCount(count - 1);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>{count}</h1>
+      <button onClick={increment}>Increment</button>
+      <button onClick={decrement}>Decrement</button>
+      <h1>{typeOfInteger}</h1>
+
+      <NewComponent />
     </div>
   );
 }

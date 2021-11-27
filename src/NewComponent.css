@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+.image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
